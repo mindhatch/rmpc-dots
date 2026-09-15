@@ -24,4 +24,8 @@ cd ~/.config/rmpc
 cp config.ron.large-art.bak config.ron
 ```
 
+<<<<<<< Updated upstream
 <img width="717" height="955" alt="large-art" src="https://github.com/user-attachments/assets/1ea687c6-0c30-4581-a1b7-c499689498b5" />
+=======
+<img width="717" height="955" alt="large-art" src="https://github.com/user-attachments/assets/1ea687c6-0c30-4581-a1b7-c499689498b5" />
+>>>>>>> Stashed changes

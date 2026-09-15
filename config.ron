@@ -4,13 +4,13 @@
 (
     address: "127.0.0.1:6600",
     password: None,
-    theme: "~/.config/rmpc/themes/kitten-large-queue.ron",
+    theme: "~/.config/rmpc/themes/kitten-smol-art.ron",
     cache_dir: "~/.config/rmpc/cache",
     lyrics_dir: "~/.config/rmpc/cache/lyrics",
-    on_song_change: ["~/.config/rmpc/on-song-change-large-queue"],
+    on_song_change: ["~/.config/rmpc/on-song-change-smol-art"],
     volume_step: 5,
     max_fps: 30,
-    scrolloff: 4,
+    scrolloff: 3,
     wrap_navigation: true,
     enable_mouse: true,
     enable_focus_events: true,
@@ -182,7 +182,63 @@
     tabs: [
         (
             name: "Queue",
-            pane: Pane(Queue),
+            pane: Split(
+                direction: Vertical,
+                panes: [
+                    (
+                        size: "100%",
+                        pane: Split(
+                            direction: Horizontal,
+                            panes: [
+                                (
+                                    size: "50%",
+                                    pane: Pane(AlbumArt),
+                                ),
+                                (
+                                    size: "50%",
+                                    pane: Pane(Queue),
+                                ),
+                            ],
+                        ),
+                    ),
+                    (
+                        size: "4",
+                        pane: Split(
+                            direction: Vertical,
+                            panes: [
+                                (
+                                    size: "1",
+                                    pane: Pane(Property(content: [
+										(kind: Text(" ")),
+                                        (kind: Property(Song(Title)), style: (fg: "blue", modifiers: "Bold|Italic"),
+                                            default: (kind: Text("Analog girl"), style: (fg: "blue", modifiers: "Italic"))),
+                                    ])),
+                                ),
+                                (
+                                    size: "1",
+                                    pane: Pane(Property(content: [
+										(kind: Text("  ")),
+                                        (kind: Property(Song(Artist)), style: (fg: "light_red", modifiers: "Bold"),
+                                            default: (kind: Text("in"), style: (fg: "light_red", modifiers: "Italic"))),
+                                    ])),
+                                ),
+                                (
+                                    size: "1",
+                                    pane: Pane(Property(content: [
+										(kind: Text("   ")),
+                                        (kind: Property(Song(Album)),
+                                            default: (kind: Text("a digital world"), style: (modifiers: "Bold|Italic"))),
+                                    ])),
+                                ),
+                                (
+                                    size: "1",
+                                    pane: Pane(ProgressBar),
+                                ),
+                            ]
+                        )
+                    ),
+                ],
+            ),
         ),
         (
             name: "Artists",
@@ -194,6 +250,7 @@
                     (
                         size: "100%",
 						pane: Pane(Artists),
+                        borders: "BOTTOM",
                     )
                 ],
             )
