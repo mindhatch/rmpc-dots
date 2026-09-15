@@ -41,11 +41,11 @@ if [ "$HAS_LRC" = "false" ]; then
         "$LRCLIB_INSTANCE/api/get" | jq -r '.syncedLyrics')"
 
     if [ -z "$LYRICS" ] || [ "$LYRICS" = "null" ]; then
-        if [ "$CURRENT_THEME" = "kitten-cava" ]; then
+        if [ "$CURRENT_THEME" = "kitten-cava-large-queue" ]; then
             exit
         else
-            rmpc remote --pid "$PID" set theme ~/.config/rmpc/themes/kitten-cava.ron
-            echo "kitten-cava" > "$CURRENT_THEME_FILE"
+            rmpc remote --pid "$PID" set theme ~/.config/rmpc/themes/kitten-cava-large-queue.ron
+            echo "kitten-cava-large-queue" > "$CURRENT_THEME_FILE"
             exit
         fi
 
@@ -62,12 +62,12 @@ if [ "$HAS_LRC" = "false" ]; then
 fi
 
 if [ "$HAS_LRC" = "true" ]; then
-    if [ "$CURRENT_THEME" = "kitten" ]; then
+    if [ "$CURRENT_THEME" = "kitten-large-queue" ]; then
         rmpc remote --pid "$PID" indexlrc --path "$LRC_FILE"
         exit
     else
-        rmpc remote --pid "$PID" set theme ~/.config/rmpc/themes/kitten.ron
-        echo "kitten" > "$CURRENT_THEME_FILE"
+        rmpc remote --pid "$PID" set theme ~/.config/rmpc/themes/kitten-large-queue.ron
+        echo "kitten-large-queue" > "$CURRENT_THEME_FILE"
         
         sleep 0.1
         

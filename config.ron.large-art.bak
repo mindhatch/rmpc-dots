@@ -267,8 +267,9 @@
                 size: "100%",
                 direction: Vertical,
                 panes: [
-                    (pane: Pane(Artists),
+                    (
                         size: "100%",
+						pane: Pane(Artists),
                         borders: "BOTTOM",
                     )
                 ],

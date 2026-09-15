@@ -1,0 +1,76 @@
+#!/usr/bin/env sh
+
+TMP_DIR="/tmp/rmpc"
+mkdir -p "$TMP_DIR"
+PID=$(pidof rmpc)
+
+CURRENT_THEME_FILE="$TMP_DIR/current_theme_state"
+if [ ! -f "$CURRENT_THEME_FILE" ]; then
+    echo "unknown" > "$CURRENT_THEME_FILE"
+fi
+CURRENT_THEME=$(cat "$CURRENT_THEME_FILE")
+
+# This section is for sending art, title, artist and state as a notification on song change
+
+# ALBUM_ART_PATH="$TMP_DIR/notification_cover"
+# DEFAULT_ALBUM_ART_PATH="$HOME/.misc/rmpc/assets/default.jpg"
+
+# if ! rmpc albumart --output "$ALBUM_ART_PATH"; then
+    # ALBUM_ART_PATH="${DEFAULT_ALBUM_ART_PATH}"
+# fi
+
+# STATE=$(rmpc status | jq -r '.state')
+# SYNC="songchange"
+
+# if [ "$STATE" = "Play" ]; then
+# notify-send -i "${ALBUM_ART_PATH}" -u low -h string:x-canonical-private-synchronous:audio "$TITLE" "by $ARTIST"
+# else
+    # notify-send -i "${ALBUM_ART_PATH}" -u low -h string:x-canonical-private-synchronous:$SYNC "${STATE}d" "$ARTIST\n$TITLE"
+# fi
+
+LRCLIB_INSTANCE="https://lrclib.net"
+
+if [ "$HAS_LRC" = "false" ]; then
+    mkdir -p "$(dirname "$LRC_FILE")"
+
+    LYRICS="$(curl -X GET -sG \
+        -H "Lrclib-Client: rmpc-$VERSION" \
+        --data-urlencode "artist_name=$ARTIST" \
+        --data-urlencode "track_name=$TITLE" \
+        --data-urlencode "album_name=$ALBUM" \
+        "$LRCLIB_INSTANCE/api/get" | jq -r '.syncedLyrics')"
+
+    if [ -z "$LYRICS" ] || [ "$LYRICS" = "null" ]; then
+        if [ "$CURRENT_THEME" = "kitten-cava-smol-art" ]; then
+            exit
+        else
+            rmpc remote --pid "$PID" set theme ~/.config/rmpc/themes/kitten-cava-smol-art.ron
+            echo "kitten-cava-smol-art" > "$CURRENT_THEME_FILE"
+            exit
+        fi
+
+    fi
+
+    echo "[ar:$ARTIST]" >"$LRC_FILE"
+    {
+        echo "[al:$ALBUM]"
+        echo "[ti:$TITLE]"
+    } >>"$LRC_FILE"
+    echo "$LYRICS" | sed -E '/^\[(ar|al|ti):/d' >>"$LRC_FILE"
+
+    HAS_LRC="true"
+fi
+
+if [ "$HAS_LRC" = "true" ]; then
+    if [ "$CURRENT_THEME" = "kitten-smol-art" ]; then
+        rmpc remote --pid "$PID" indexlrc --path "$LRC_FILE"
+        exit
+    else
+        rmpc remote --pid "$PID" set theme ~/.config/rmpc/themes/kitten-smol-art.ron
+        echo "kitten-smol-art" > "$CURRENT_THEME_FILE"
+        
+        sleep 0.1
+        
+        rmpc remote --pid "$PID" indexlrc --path "$LRC_FILE"
+    fi
+fi

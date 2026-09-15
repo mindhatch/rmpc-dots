@@ -85,8 +85,8 @@
         direction: Vertical,
         panes: [
             (
-                pane: Pane(TabContent),
                 size: "100%",
+                pane: Pane(TabContent),
             ),
 		    (
                 size: "4",

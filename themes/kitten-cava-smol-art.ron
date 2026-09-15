@@ -85,22 +85,23 @@
         direction: Vertical,
         panes: [
             (
+                size: "100%",
                 pane: Pane(TabContent),
                 borders: "TOP | LEFT | RIGHT",
                 border_symbols: Rounded,
                 border_title: [(kind: Text(" 音楽を聴く"), style: (fg: "light_red"))],
                 border_title_position: Top,
                 border_title_alignment: Left,
-                size: "100%",
             ),
 		    (
                 size: "1",
+                pane: Pane(Empty()),
 				borders: "LEFT | RIGHT",
                 border_symbols: Rounded,
-                pane: Pane(Empty())
 		    ),
 		    (
                 size: "9",
+                pane: Pane(Cava),
 				borders: "LEFT | RIGHT | BOTTOM",
                 border_symbols: Rounded,
                 border_title: [
@@ -124,7 +125,6 @@
 				],
                 border_title_position: Bottom,
                 border_title_alignment: Center,
-                pane: Pane(Cava)
 		    ),
         ],
     ),

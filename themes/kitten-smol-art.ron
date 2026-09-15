@@ -71,6 +71,7 @@
         direction: Vertical,
         panes: [
 			(
+				size: "100%",
 				pane: Pane(TabContent),
 				borders: "TOP | LEFT | RIGHT",
                 border_symbols: Rounded,
@@ -79,21 +80,21 @@
 				],
                 border_title_position: Top,
                 border_title_alignment: Left,
-				size: "100%",
 			),
 			(
 				size: "1",
+				pane: Pane(Empty()),
 				borders: "LEFT | RIGHT",
-				pane: Pane(Empty())
 			),
 			(
 				size: "7",
+				pane: Pane(Lyrics),
 				borders: "LEFT | RIGHT",
                 border_symbols: Rounded,
-				pane: Pane(Lyrics)
 			),
 			(
 				size: "2",
+				pane: Pane(Empty()),
 				borders: "LEFT | RIGHT | BOTTOM",
                 border_symbols: Rounded,
                 border_title: [
@@ -117,7 +118,6 @@
 				],
                 border_title_position: Bottom,
                 border_title_alignment: Center,
-				pane: Pane(Empty())
 			),
         ],
     ),
