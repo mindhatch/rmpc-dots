@@ -8,6 +8,7 @@
     cache_dir: "~/.config/rmpc/cache",
     lyrics_dir: "~/.config/rmpc/cache/lyrics",
     on_song_change: ["~/.config/rmpc/on-song-change-smol-art"],
+	exec_on_song_change_at_start: true,
     volume_step: 5,
     max_fps: 30,
     scrolloff: 3,
