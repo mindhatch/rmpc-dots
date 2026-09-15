@@ -1,0 +1,258 @@
+#![enable(implicit_some)]
+#![enable(unwrap_newtypes)]
+#![enable(unwrap_variant_newtypes)]
+(
+    address: "127.0.0.1:6600",
+    password: None,
+    theme: "~/.config/rmpc/themes/kitten.ron",
+    cache_dir: "~/.config/rmpc/cache",
+    lyrics_dir: "~/.config/rmpc/cache/lyrics",
+    on_song_change: ["~/.config/rmpc/on-song-change"],
+    volume_step: 5,
+    max_fps: 30,
+    scrolloff: 3,
+    wrap_navigation: true,
+    enable_mouse: true,
+    enable_focus_events: true,
+    scroll_amount: 1,
+    enable_config_hot_reload: true,
+    enable_keepalive: true,
+    enable_lyrics_hot_reload: true,
+    status_update_interval_ms: 1000,
+    rewind_to_start_sec: None,
+    keep_state_on_song_change: true,
+    reflect_changes_to_playlist: false,
+    select_current_song_on_change: true,
+    on_exit: None,
+    ignore_leading_the: false,
+    browser_song_sort: [Disc, Track, Artist, Title],
+    directories_sort: SortFormat(group_by_type: true, reverse: false),
+    directories_hidden_dirs: [],
+    auto_open_downloads: true,
+    quit_closes_modal: false,
+    queue_disable_current_item_style_timeout_ms: None,
+    album_art: (
+        method: Kitty,
+        max_size_px: (width: 1200, height: 1200),
+        disabled_protocols: ["http://", "https://"],
+        vertical_align: Center,
+        horizontal_align: Center,
+    ),
+    keybinds: (
+        global: {
+            "q":          Quit,
+            "?":          ShowHelp,
+            ":":          CommandMode,
+            "oI":         ShowCurrentSongInfo,
+            "oo":         ShowOutputs,
+            "op":         ShowDecoders,
+            "od":         ShowDownloads,
+            "oP":         Partition(),
+            "8":          ToggleRepeat,
+            "x":          ToggleRandom,
+            "c":          ToggleConsume,
+            "9":          ToggleSingle,
+            "p":          TogglePause,
+            "s":          Stop,
+            ">":          NextTrack,
+            "<":          PreviousTrack,
+            "f":          SeekForward,
+            "b":          SeekBack,
+            ".":          VolumeUp,
+            ",":          VolumeDown,
+            "<Tab>":      NextTab,
+            "gt":         NextTab,
+            "<S-Tab>":    PreviousTab,
+            "gT":         PreviousTab,
+            "1":          SwitchToTab("Queue"),
+            "2":          SwitchToTab("Artists"),
+            "3":          SwitchToTab("Queue"),
+            "4":          SwitchToTab("Artists"),
+            "5":          SwitchToTab("Queue"),
+            "6":          SwitchToTab("Artists"),
+            "7":          SwitchToTab("Queue"),
+            "u":          Update,
+            "U":          Rescan,
+            "R":          AddRandom,
+        },
+        navigation: {
+            "<C-c>":      Close,
+            "<Esc>":      Close,
+            "<CR>":       Confirm,
+            "k":          Up,
+            "<Up>":       Up,
+            "j":          Down,
+            "<Down>":     Down,
+            "h":          Left,
+            "<Left>":     Left,
+            "l":          Right,
+            "<Right>":    Right,
+            "<C-w>k":     PaneUp,
+            "<C-Up>":     PaneUp,
+            "<C-w>j":     PaneDown,
+            "<C-Down>":   PaneDown,
+            "<C-w>h":     PaneLeft,
+            "<C-Left>":   PaneLeft,
+            "<C-w>l":     PaneRight,
+            "<C-Right>":  PaneRight,
+            "K":          MoveUp,
+            "J":          MoveDown,
+            "<C-u>":      UpHalf,
+            "<C-d>":      DownHalf,
+            "<C-b>":      PageUp,
+            "<PageUp>":   PageUp,
+            "<C-f>":      PageDown,
+            "<PageDown>": PageDown,
+            "gg":         Top,
+            "G":          Bottom,
+            "zt":         ScrollFocusedToTop,
+            "zz":         ScrollFocusedToMiddle,
+            "zb":         ScrollFocusedToBottom,
+            "<Space>":    Select,
+            "<C-Space>":  InvertSelection,
+            "/":          EnterSearch,
+            "n":          NextResult,
+            "N":          PreviousResult,
+            "a":          Add,
+            "A":          AddAll,
+            "D":          Delete,
+            "<C-r>":      Rename,
+            "i":          FocusInput,
+            "oi":         ShowInfo,
+            "<C-x>":      ContextMenu(),
+            "<C-s>s":     Save(kind: Modal(all: false, duplicates_strategy: Ask)),
+            "<C-s>c":     Save(kind: Modal(all: false, duplicates_strategy: Ask), current: true),
+            "<C-s>a":     Save(kind: Modal(all: true, duplicates_strategy: Ask)),
+            "r":          Rate(),
+            "Y":          CopyToClipboard(kind: Modal([
+                              ("Displayed value", (content: DisplayedValue, all: false)),
+                              ("Artist - Title", (content: Metadata([(kind: Property(Artist)), (kind: Text(" - ")), (kind: Property(Title))]), all: false)),
+                          ])),
+            "y":          CopyToClipboard(kind: Content(content: DisplayedValue, all : false)),
+        },
+        queue: {
+            "d":          Delete,
+            "D":          DeleteAll,
+            "<CR>":       Play,
+            "C":          JumpToCurrent,
+            "L":          SelectAlbum(),
+            "X":          Shuffle,
+        },
+    ),
+    search: (
+        case_sensitive: false,
+        ignore_diacritics: false,
+        search_button: false,
+        mode: Contains,
+        tags: [
+            (value: "any",         label: "Any Tag"),
+            (value: "artist",      label: "Artist"),
+            (value: "album",       label: "Album"),
+            (value: "title",       label: "Title"),
+            (value: "filename",    label: "Filename"),
+            (value: "genre",       label: "Genre"),
+        ],
+    ),
+    artists: (
+        album_display_mode: NameOnly,
+        album_sort_by: Date,
+    ),
+	cava: (
+	    framerate: 60, // default 60
+	    autosens: true, // default true
+	    sensitivity: 150, // default 100
+	    lower_cutoff_freq: 50, // not passed to cava if not provided
+	    higher_cutoff_freq: 10000, // not passed to cava if not provided
+	    input: (
+	        method: Fifo,
+	        source: "/tmp/mpd.fifo",
+	        sample_rate: 44100,
+	        channels: 2,
+	        sample_bits: 16,
+	    ),
+	    smoothing: (
+	        noise_reduction: 77, // default 77
+	        monstercat: false, // default false
+	        waves: true, // default false
+			scaling: decibel,
+			
+	    ),
+	    eq: []
+	),
+    tabs: [
+        (
+            name: "Queue",
+            pane: Split(
+                direction: Vertical,
+                panes: [
+                    (
+                        size: "100%",
+                        pane: Split(
+                            direction: Horizontal,
+                            panes: [
+                                (
+                                    size: "50%",
+                                    pane: Pane(AlbumArt),
+                                ),
+                                (
+                                    size: "50%",
+                                    pane: Pane(Queue),
+                                ),
+                            ],
+                        ),
+                    ),
+                    (
+                        size: "4",
+                        pane: Split(
+                            direction: Vertical,
+                            panes: [
+                                (
+                                    size: "1",
+                                    pane: Pane(Property(content: [
+										(kind: Text(" ")),
+                                        (kind: Property(Song(Title)), style: (fg: "blue", modifiers: "Bold|Italic"),
+                                            default: (kind: Text("Analog girl"), style: (fg: "blue", modifiers: "Italic"))),
+                                    ])),
+                                ),
+                                (
+                                    size: "1",
+                                    pane: Pane(Property(content: [
+										(kind: Text("  ")),
+                                        (kind: Property(Song(Artist)), style: (fg: "light_red", modifiers: "Bold"),
+                                            default: (kind: Text("in"), style: (fg: "light_red", modifiers: "Italic"))),
+                                    ])),
+                                ),
+                                (
+                                    size: "1",
+                                    pane: Pane(Property(content: [
+										(kind: Text("   ")),
+                                        (kind: Property(Song(Album)),
+                                            default: (kind: Text("a digital world"), style: (modifiers: "Bold|Italic"))),
+                                    ])),
+                                ),
+                                (
+                                    size: "1",
+                                    pane: Pane(ProgressBar),
+                                ),
+                            ]
+                        )
+                    ),
+                ],
+            ),
+        ),
+        (
+            name: "Artists",
+            borders: "NONE",
+            pane: Split(
+                size: "100%",
+                direction: Vertical,
+                panes: [
+                    (pane: Pane(Artists),
+                        size: "100%",
+                        borders: "BOTTOM",
+                    )
+                ],
+            )
+        ),
+    ],
+)

@@ -1,0 +1,97 @@
+#![enable(implicit_some)]
+#![enable(unwrap_newtypes)]
+#![enable(unwrap_variant_newtypes)]
+(
+    default_album_art_path: None,
+    format_tag_separator: " | ",
+    draw_borders: false,
+    browser_column_widths: [0, 50, 50],
+    background_color: None,
+    text_color: None,
+	borders_style: (fg: "black"),
+	highlight_border_style: (fg: "black"),
+    header_background_color: None,
+    modal_background_color: None,
+    modal_backdrop: false,
+    preview_metadata_group_style: (modifiers: "Bold"),
+    highlighted_item_style: (fg: "blue", modifiers: "Bold|Italic"),
+    current_item_style: (fg: "#cc7e8b", bg: "#ffffff", modifiers: "Reversed"),
+    symbols: (
+        song: " ",
+        dir: " ",
+        playlist: " ",
+        marker: " ",
+        ellipsis: "...",
+        song_style: None,
+        dir_style: None,
+        playlist_style: None,
+    ),
+    level_styles: (
+        info: (),
+        warn: (),
+        error: (),
+        debug: (),
+        trace: (),
+    ),
+    progress_bar: (
+        symbols: ["ᓚ", "ᘏ", "ᗢ", "𓂃", "ᗢ"],
+		elapsed_style: (fg: "light_red"),
+        thumb_style: (fg: "light_red"),
+        track_style: (fg: "black"),
+        use_track_when_empty: true,
+    ),
+    scrollbar: (
+        symbols: ["│", "┃", "", ""],
+        track_style: (fg: "black", modifiers: "Dim"),
+        ends_style: (),
+        thumb_style: (fg: "magenta"),
+    ),
+    tab_bar: (
+        active_style: (),
+        inactive_style: (),
+    ),
+    browser_song_format: [
+        (
+            kind: Group([
+                (kind: Property(Title)),
+            ]),
+            default: (kind: Property(Filename))
+        ),
+    ],
+    song_table_format: [
+        (
+            prop: (
+				kind: Property(Title),
+                default: (kind: Text("Unknown"))
+            ),
+            label_prop: (kind: Text("Title")),
+            width: "100%",
+        ),
+	],
+	cava: (
+	    bar_symbols: ['▁', '▂', '▃', '▄', '▅', '▆', '▇', '█'],
+	    inverted_bar_as_mask: false,
+	    bar_width: 1,
+	    bar_spacing: 1,
+	    orientation: Bottom,
+		
+	    bar_color: Gradient({
+	          0: "#cc7e8b",
+	         50: "#c9afba",
+	        100: "#d4bdc2",
+	    })
+	),
+    layout: Split(
+        direction: Vertical,
+        panes: [
+            (
+                pane: Pane(TabContent),
+                size: "100%",
+            ),
+		    (
+                size: "4",
+                pane: Pane(Cava),
+		    ),
+        ],
+    ),
+)
