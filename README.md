@@ -1,5 +1,6 @@
 # rmpc-dots
 
+- place inside of your `~/.config/rmpc` directory
 - swap the colors to whatever you desire :)
 - press `tab` to swap between the main view and the Artists tab. these are the only two tabs i have set up!
 - lyrics/cava pane is visible on the artists tab as well as the main view :p
