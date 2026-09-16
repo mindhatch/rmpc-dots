@@ -151,15 +151,15 @@
             direction: Horizontal,
             panes: [
                 (
-                    size: "48%",
+                    size: "50%",
                     pane: Pane(AlbumArt),
                 ),
 				(
-					size: "1%",
+					size: "2%",
 					pane: Pane(Empty()),
 				),
                 (
-                    size: "48%",
+                    size: "50%",
                     pane: Pane(Cava),
                 ),
             ]

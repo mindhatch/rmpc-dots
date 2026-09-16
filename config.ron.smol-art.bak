@@ -195,6 +195,10 @@
                                     size: "50%",
                                     pane: Pane(AlbumArt),
                                 ),
+								(
+									size: "2%",
+									pane: Pane(Empty()),
+								),
                                 (
                                     size: "50%",
                                     pane: Pane(Queue),
