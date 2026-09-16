@@ -3,9 +3,8 @@
 - place inside of your `~/.config/rmpc` directory
 - swap the colors to whatever you desire :)
 - press `tab` to swap between the main view and the Artists tab. these are the only two tabs i have set up!
-- lyrics/cava pane is visible on the artists tab as well as the main view :p
 - these were created to be used at a specific window size, so may require some adjustment to look proper on your system!
-- the on-song-change scripts dynamically swap the lyrics pane with a cava pane if no lyrics are found locally/if none can be automatically downloaded for that track. edit `theme` and `on-song-change` in `config.ron` if you want to use only one of these instead. (i'll probably consolidate this to a single script at some point
+- the on-song-change scripts dynamically swap the lyrics pane with a cava pane if no lyrics are found locally/if none can be automatically downloaded for that track. edit `theme` and `on-song-change` in `config.ron` if you want to use only one of these instead.
 
 ## to use the smol album art w/ queue:
 
