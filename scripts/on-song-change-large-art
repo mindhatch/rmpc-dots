@@ -5,7 +5,7 @@ TMP_DIR="/tmp/rmpc"
 mkdir -p "$TMP_DIR"
 LRCLIB_INSTANCE="https://lrclib.net"
 
-CURRENT_THEME_FILE="$TMP_DIR/current_theme_state_large_art"
+CURRENT_THEME_FILE="$TMP_DIR/current_theme_state"
 if [ ! -f "$CURRENT_THEME_FILE" ]; then
     echo "unknown" > "$CURRENT_THEME_FILE"
 fi
