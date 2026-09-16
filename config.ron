@@ -4,10 +4,10 @@
 (
     address: "127.0.0.1:6600",
     password: None,
-    theme: "~/.config/rmpc/themes/kitten-lyrics-smol-art.ron",
+    theme: "~/.config/rmpc/themes/smol-art-lyrics.ron",
     cache_dir: "~/.config/rmpc/cache",
     lyrics_dir: "~/.config/rmpc/cache/lyrics",
-    on_song_change: ["~/.config/rmpc/on-song-change-smol-art"],
+    on_song_change: ["~/.config/rmpc/scripts/on-song-change-smol-art"],
 	exec_on_song_change_at_start: true,
     volume_step: 5,
     max_fps: 30,
@@ -37,7 +37,7 @@
         max_size_px: (width: 1200, height: 1200),
         disabled_protocols: ["http://", "https://"],
         vertical_align: Center,
-        horizontal_align: Center,
+        horizontal_align: Left,
     ),
     keybinds: (
         global: {
@@ -214,7 +214,6 @@
                                 (
                                     size: "1",
                                     pane: Pane(Property(content: [
-										(kind: Text(" ")),
                                         (kind: Property(Song(Title)), style: (fg: "blue", modifiers: "Bold|Italic"),
                                             default: (kind: Text("Analog girl"), style: (fg: "blue", modifiers: "Italic"))),
                                     ])),
@@ -222,7 +221,7 @@
                                 (
                                     size: "1",
                                     pane: Pane(Property(content: [
-										(kind: Text("  ")),
+										(kind: Text(" ")),
                                         (kind: Property(Song(Artist)), style: (fg: "light_red", modifiers: "Bold"),
                                             default: (kind: Text("in"), style: (fg: "light_red", modifiers: "Italic"))),
                                     ])),
@@ -230,7 +229,7 @@
                                 (
                                     size: "1",
                                     pane: Pane(Property(content: [
-										(kind: Text("   ")),
+										(kind: Text("  ")),
                                         (kind: Property(Song(Album)),
                                             default: (kind: Text("a digital world"), style: (modifiers: "Bold|Italic"))),
                                     ])),

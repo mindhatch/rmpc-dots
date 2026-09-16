@@ -170,7 +170,6 @@
                 (
                     size: "1",
                     pane: Pane(Property(content: [
-						(kind: Text(" ")),
                         (kind: Property(Song(Title)), style: (fg: "blue", modifiers: "Bold|Italic"),
                             default: (kind: Text("Analog girl"), style: (fg: "blue", modifiers: "Italic"))),
                     ])),
@@ -178,7 +177,7 @@
                 (
                     size: "1",
                     pane: Pane(Property(content: [
-						(kind: Text("  ")),
+						(kind: Text(" ")),
                         (kind: Property(Song(Artist)), style: (fg: "light_red", modifiers: "Bold"),
                             default: (kind: Text("in"), style: (fg: "light_red", modifiers: "Italic"))),
                     ])),
@@ -186,7 +185,7 @@
                 (
                     size: "1",
                     pane: Pane(Property(content: [
-						(kind: Text("   ")),
+						(kind: Text("  ")),
                         (kind: Property(Song(Album)),
                             default: (kind: Text("a digital world"), style: (modifiers: "Bold|Italic"))),
                     ])),

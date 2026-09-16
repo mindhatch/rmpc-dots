@@ -4,10 +4,10 @@
 (
     address: "127.0.0.1:6600",
     password: None,
-    theme: "~/.config/rmpc/themes/kitten-lyrics-large-art.ron",
+    theme: "~/.config/rmpc/themes/smol-art-lyrics.ron",
     cache_dir: "~/.config/rmpc/cache",
     lyrics_dir: "~/.config/rmpc/cache/lyrics",
-    on_song_change: ["~/.config/rmpc/on-song-change-large-art"],
+    on_song_change: ["~/.config/rmpc/scripts/on-song-change-smol-art"],
 	exec_on_song_change_at_start: true,
     volume_step: 5,
     max_fps: 30,
@@ -37,7 +37,7 @@
         max_size_px: (width: 1200, height: 1200),
         disabled_protocols: ["http://", "https://"],
         vertical_align: Center,
-        horizontal_align: Center,
+        horizontal_align: Left,
     ),
     keybinds: (
         global: {
@@ -192,18 +192,22 @@
                             direction: Horizontal,
                             panes: [
                                 (
-                                    size: "100%",
+                                    size: "50%",
                                     pane: Pane(AlbumArt),
                                 ),
+								(
+									size: "2%",
+									pane: Pane(Empty()),
+								),
                                 (
-                                    size: "0%",
+                                    size: "50%",
                                     pane: Pane(Queue),
                                 ),
                             ],
                         ),
                     ),
                     (
-                        size: "5",
+                        size: "4",
                         pane: Split(
                             direction: Vertical,
                             panes: [
@@ -230,27 +234,6 @@
                                             default: (kind: Text("a digital world"), style: (modifiers: "Bold|Italic"))),
                                     ])),
                                 ),
-								(
-									size: "1",
-									pane: Pane(Property(content: [
-					                    (kind: Property(Status(RandomV2(
-					                        on_label: "ৎ୭ ",
-					                        off_label: "ৎ୭ ",
-					                        on_style: (fg: "magenta", modifiers: "Bold"),
-					                        off_style: (fg: "magenta"),
-					                    )))),
-					                    (kind: Property(Status(StateV2()))),
-					                    (kind: Property(Status(ConsumeV2(
-					                        on_label: " ৎ୭",
-					                        off_label: " ৎ୭",
-					                        oneshot_label: " ৎ୭",
-					                        on_style: (fg: "light_red", modifiers: "Bold"),
-					                        off_style: (fg: "light_red"),
-					                        oneshot_style: (fg: "light_red", modifiers: "Dim"),
-					                    )))),
-									],
-										align: Center)),
-								),
                                 (
                                     size: "1",
                                     pane: Pane(ProgressBar),

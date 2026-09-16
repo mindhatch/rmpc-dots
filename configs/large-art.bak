@@ -4,10 +4,10 @@
 (
     address: "127.0.0.1:6600",
     password: None,
-    theme: "~/.config/rmpc/themes/kitten-lyrics-smol-art.ron",
+    theme: "~/.config/rmpc/themes/large-art-lyrics.ron",
     cache_dir: "~/.config/rmpc/cache",
     lyrics_dir: "~/.config/rmpc/cache/lyrics",
-    on_song_change: ["~/.config/rmpc/on-song-change-smol-art"],
+    on_song_change: ["~/.config/rmpc/scripts/on-song-change-large-art"],
 	exec_on_song_change_at_start: true,
     volume_step: 5,
     max_fps: 30,
@@ -192,29 +192,24 @@
                             direction: Horizontal,
                             panes: [
                                 (
-                                    size: "50%",
+                                    size: "100%",
                                     pane: Pane(AlbumArt),
                                 ),
-								(
-									size: "2%",
-									pane: Pane(Empty()),
-								),
                                 (
-                                    size: "50%",
+                                    size: "0%",
                                     pane: Pane(Queue),
                                 ),
                             ],
                         ),
                     ),
                     (
-                        size: "4",
+                        size: "5",
                         pane: Split(
                             direction: Vertical,
                             panes: [
                                 (
                                     size: "1",
                                     pane: Pane(Property(content: [
-										(kind: Text(" ")),
                                         (kind: Property(Song(Title)), style: (fg: "blue", modifiers: "Bold|Italic"),
                                             default: (kind: Text("Analog girl"), style: (fg: "blue", modifiers: "Italic"))),
                                     ])),
@@ -222,7 +217,7 @@
                                 (
                                     size: "1",
                                     pane: Pane(Property(content: [
-										(kind: Text("  ")),
+										(kind: Text(" ")),
                                         (kind: Property(Song(Artist)), style: (fg: "light_red", modifiers: "Bold"),
                                             default: (kind: Text("in"), style: (fg: "light_red", modifiers: "Italic"))),
                                     ])),
@@ -230,11 +225,32 @@
                                 (
                                     size: "1",
                                     pane: Pane(Property(content: [
-										(kind: Text("   ")),
+										(kind: Text("  ")),
                                         (kind: Property(Song(Album)),
                                             default: (kind: Text("a digital world"), style: (modifiers: "Bold|Italic"))),
                                     ])),
                                 ),
+								(
+									size: "1",
+									pane: Pane(Property(content: [
+					                    (kind: Property(Status(RandomV2(
+					                        on_label: "ৎ୭ ",
+					                        off_label: "ৎ୭ ",
+					                        on_style: (fg: "magenta", modifiers: "Bold"),
+					                        off_style: (fg: "magenta"),
+					                    )))),
+					                    (kind: Property(Status(StateV2()))),
+					                    (kind: Property(Status(ConsumeV2(
+					                        on_label: " ৎ୭",
+					                        off_label: " ৎ୭",
+					                        oneshot_label: " ৎ୭",
+					                        on_style: (fg: "light_red", modifiers: "Bold"),
+					                        off_style: (fg: "light_red"),
+					                        oneshot_style: (fg: "light_red", modifiers: "Dim"),
+					                    )))),
+									],
+										align: Center)),
+								),
                                 (
                                     size: "1",
                                     pane: Pane(ProgressBar),

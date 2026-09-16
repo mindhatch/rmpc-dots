@@ -10,7 +10,7 @@
 
 ```
 cd ~/.config/rmpc
-cp config.ron.smol-art.bak config.ron
+cp configs/smol-art.bak config.ron
 ```
 
 <img width="688" height="718" alt="smol-art" src="https://github.com/user-attachments/assets/2507fc68-23a5-4379-81d5-dd86ed82b1c1" />
@@ -20,7 +20,7 @@ cp config.ron.smol-art.bak config.ron
 
 ```
 cd ~/.config/rmpc
-cp config.ron.large-art.bak config.ron
+cp configs/large-art.bak config.ron
 ```
 
 <img width="717" height="955" alt="large-art" src="https://github.com/user-attachments/assets/1ea687c6-0c30-4581-a1b7-c499689498b5" />
@@ -29,7 +29,7 @@ cp config.ron.large-art.bak config.ron
 
 ```
 cd ~/.config/rmpc
-cp config.ron.large-queue.bak config.ron
+cp configs/large-queue.bak config.ron
 ```
 <img width="686" height="729" alt="09-15-2026-02:31:45-annotated" src="https://github.com/user-attachments/assets/ec10f9be-1491-4872-a3e2-59e989306e1c" />
 <img width="684" height="727" alt="09-15-2026-02:30:54-annotated" src="https://github.com/user-attachments/assets/519e62b0-9f12-462a-bac0-1d7f88d23ac6" />
