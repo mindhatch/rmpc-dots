@@ -62,12 +62,12 @@ if [ "$HAS_LRC" = "false" ]; then
 fi
 
 if [ "$HAS_LRC" = "true" ]; then
-    if [ "$CURRENT_THEME" = "kitten-large-queue" ]; then
+    if [ "$CURRENT_THEME" = "kitten-lyrics-large-queue" ]; then
         rmpc remote --pid "$PID" indexlrc --path "$LRC_FILE"
         exit
     else
-        rmpc remote --pid "$PID" set theme ~/.config/rmpc/themes/kitten-large-queue.ron
-        echo "kitten-large-queue" > "$CURRENT_THEME_FILE"
+        rmpc remote --pid "$PID" set theme ~/.config/rmpc/themes/kitten-lyrics-large-queue.ron
+        echo "kitten-lyrics-large-queue" > "$CURRENT_THEME_FILE"
         
         sleep 0.1
         
