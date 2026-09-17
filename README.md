@@ -34,4 +34,4 @@ cp configs/large-queue.bak config.ron
 ```
 
 <img width="681" height="710" alt="09-16-2026-02:59:21-annotated" src="https://github.com/user-attachments/assets/b08ef167-a893-4251-8502-2a02f417ba96" />
-<img width="681" height="712" alt="09-16-2026-03:00:21-annotated" src="https://github.com/user-attachments/assets/bdd6e703-6c71-4836-baa3-f540e16e4fc5" />
+<img width="681" height="710" alt="09-16-2026-20:46:54-annotated" src="https://github.com/user-attachments/assets/b652e8ac-9fe5-46c2-bc93-fbd6d566b323" />
